@@ -1,0 +1,22 @@
+69121/69121 ━━━━━━━━━━━━━━━━━━━━ 3399s 49ms/step - accuracy: 0.8437 - loss: 0.9192 - val_accuracy: 0.8746 - val_loss: 0.8692
+Epoch 2/10
+69121/69121 ━━━━━━━━━━━━━━━━━━━━ 3159s 46ms/step - accuracy: 0.8708 - loss: 0.8806 - val_accuracy: 0.8772 - val_loss: 0.8629
+Epoch 3/10
+69121/69121 ━━━━━━━━━━━━━━━━━━━━ 3166s 46ms/step - accuracy: 0.8747 - loss: 0.8745 - val_accuracy: 0.8783 - val_loss: 0.8601
+Epoch 4/10
+69121/69121 ━━━━━━━━━━━━━━━━━━━━ 3168s 46ms/step - accuracy: 0.8765 - loss: 0.8715 - val_accuracy: 0.8799 - val_loss: 0.8584
+Epoch 5/10
+69121/69121 ━━━━━━━━━━━━━━━━━━━━ 3176s 46ms/step - accuracy: 0.8778 - loss: 0.8694 - val_accuracy: 0.8800 - val_loss: 0.8573
+Epoch 6/10
+69121/69121 ━━━━━━━━━━━━━━━━━━━━ 3178s 46ms/step - accuracy: 0.8787 - loss: 0.8677 - val_accuracy: 0.8810 - val_loss: 0.8561
+Epoch 7/10
+69121/69121 ━━━━━━━━━━━━━━━━━━━━ 3179s 46ms/step - accuracy: 0.8797 - loss: 0.8659 - val_accuracy: 0.8838 - val_loss: 0.8544
+Epoch 8/10
+69121/69121 ━━━━━━━━━━━━━━━━━━━━ 3182s 46ms/step - accuracy: 0.8807 - loss: 0.8646 - val_accuracy: 0.8843 - val_loss: 0.8543
+Epoch 9/10
+69121/69121 ━━━━━━━━━━━━━━━━━━━━ 3175s 46ms/step - accuracy: 0.8814 - loss: 0.8634 - val_accuracy: 0.8839 - val_loss: 0.8533
+Epoch 10/10
+69121/69121 ━━━━━━━━━━━━━━━━━━━━ 3183s 46ms/step - accuracy: 0.8818 - loss: 0.8628 - val_accuracy: 0.8847 - val_loss: 0.8536
+done fitting
+922/922 ━━━━━━━━━━━━━━━━━━━━ 15s 16ms/step  
+{'accuracy': 0.8818363679517174, 'precision': 0.883714452967442, 'recall': 0.8818363679517174, 'f1_score': 0.8799035251734616}
