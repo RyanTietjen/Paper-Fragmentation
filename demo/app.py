@@ -18,19 +18,30 @@ from process_input import encode_labels
 
 
 sample_list = []
-example1 =  f"""The aim of this study was to describe the electrocardiographic ( ECG ) evolutionary changes after an acute myocardial infarction ( AMI ) and to evaluate their correlation with left ventricular function and remodeling.
-The QRS complex changes after AMI have been correlated with infarct size and left ventricular function.
-By contrast , the significance of T wave changes is controversial.
-We studied 536 patients enrolled in the GISSI-3-Echo substudy who underwent ECG and echocardiographic studies at 24 to 48 h ( S1 ) , at hospital discharge ( S2 ) , at six weeks ( S3 ) and six months ( S4 ) after AMI.
-The number of Qwaves ( nQ ) and QRS quantitative score ( QRSs ) did not change over time.
-From S2 to S4 , the number of negative T waves ( nT NEG ) decreased ( p < 0.0001 ) , wall motion abnormalities ( % WMA ) improved ( p < 0.001 ) , ventricular volumes increased ( p < 0.0001 ) while ejection fraction remained stable.
-According to the T wave changes after hospital discharge , patients were divided into four groups : stable positive T waves ( group 1 , n = 35 ) , patients who showed a decrease > or = 1 in nT NEG ( group 2 , n = 361 ) , patients with no change in nT NEG ( group 3 , n = 64 ) and those with an increase > or = 1 in nT NEG ( group 4 , n = 76 ).
-The QRSs and nQ remained stable in all groups.
-Groups 3 and 4 showed less recovery in % WMA , more pronounced ventricular enlargement and progressive decline in ejection fraction than groups 1 and 2 ( interaction time x groups p < 0.0001 ).
-The analysis of serial ECG can predict postinfarct left ventricular remodeling.
-Normalization of negative T waves during the follow-up appears more strictly related to recovery of regional dysfunction than QRS changes.
-Lack of resolution and late appearance of new negative T predict unfavorable remodeling with progressive deterioration of ventricular function."""
+example1 =  f"""The aim of this study was to verify in bruxism patients the possible efficacy of auricular stimulation in reducing the hypertonicity of some masticatory muscles.
+Forty-three bruxism patients were randomly allocated to 3 groups : acupuncture , needle contact for 10 seconds , no treatment ( control ).
+Helkimo 's clinical dysfunction index ( CDI ) and anamnestic dysfunction index ( ADI ) were used to assess the functional state of the masticatory system.
+The resting electrical activity of the anterior temporalis ( AT ) , masseter ( MM ) , digastric ( DA ) and sternocleidomastoid ( SCM ) muscles was measured , according to Jankelson , with surface electrodes at baseline , after stimulation and continually for 30 minutes ( 120 measurements in total ).
+The electromyographical variations in the 3 groups were studied with t test for independent samples.
+Acupuncture and needle contact were superior to control in reducing the muscle hypertonicity of all muscles except SCM.
+In the comparison between acupuncture and needle contact the former showed better results only for the right TA and left DA ( p = 0.000 ).
+In this study it was possible to measure the efficacy of the stimulation of only one point or area , which is an ideal model for research in acupuncture.
+The auricular area we chose for stimulation was never used before for the purpose of relaxing masticatory muscles.
+Acupuncture and needle contact for 10 seconds showed similar effects."""
+example2 = """To investigate the efficacy of 6 weeks of daily low-dose oral prednisolone in improving pain , mobility , and systemic low-grade inflammation in the short term and whether the effect would be sustained at 12 weeks in older adults with moderate to severe knee osteoarthritis ( OA ) .
+A total of 125 patients with primary knee OA were randomized 1:1 ; 63 received 7.5 mg/day of prednisolone and 62 received placebo for 6 weeks .
+Outcome measures included pain reduction and improvement in function scores and systemic inflammation markers .
+Pain was assessed using the visual analog pain scale ( 0-100 mm ) .
+Secondary outcome measures included the Western Ontario and McMaster Universities Osteoarthritis Index scores , patient global assessment ( PGA ) of the severity of knee OA , and 6-min walk distance ( 6MWD ) .
+Serum levels of interleukin 1 ( IL-1 ) , IL-6 , tumor necrosis factor ( TNF ) - , and high-sensitivity C-reactive protein ( hsCRP ) were measured .
+There was a clinically relevant reduction in the intervention group compared to the placebo group for knee pain , physical function , PGA , and 6MWD at 6 weeks .
+The mean difference between treatment arms ( 95 % CI ) was 10.9 ( 4.8-18 .0 ) , p < 0.001 ; 9.5 ( 3.7-15 .4 ) , p < 0.05 ; 15.7 ( 5.3-26 .1 ) , p < 0.001 ; and 86.9 ( 29.8-144 .1 ) , p < 0.05 , respectively .
+Further , there was a clinically relevant reduction in the serum levels of IL-1 , IL-6 , TNF - , and hsCRP at 6 weeks in the intervention group when compared to the placebo group .
+These differences remained significant at 12 weeks .
+The Outcome Measures in Rheumatology Clinical Trials-Osteoarthritis Research Society International responder rate was 65 % in the intervention group and 34 % in the placebo group ( p < 0.05 ) .
+Low-dose oral prednisolone had both a short-term and a longer sustained effect resulting in less knee pain , better physical function , and attenuation of systemic inflammation in older patients with knee OA ( ClinicalTrials.gov identifier NCT01619163 ) ."""
 sample_list.append(example1)
+sample_list.append(example2)
 
 def format_non_empty_lists(objective, background, methods, results, conclusion):
     """
@@ -72,22 +83,18 @@ def fragment_single_abstract(abstract):
     Processes a single abstract by fragmenting it into structured sections based on predefined categories
     such as Objective, Methods, Results, Conclusions, and Background. The function utilizes a pre-trained Keras model
     to predict the category of each sentence in the abstract.
-
     The process involves several steps:
     1. Splitting the abstract into sentences.
     2. Encoding these sentences using a custom embedding layer.
     3. Classifying each sentence into one of the predefined categories.
     4. Grouping the sentences by their predicted categories.
-
     Parameters:
     abstract (str): The abstract text that needs to be processed and categorized.
-
     Returns:
     tuple: A tuple containing two elements:
         - A dictionary with keys as the category names ('Objective', 'Background', 'Methods', 'Results', 'Conclusions')
           and values as lists of sentences belonging to these categories. Only non-empty categories are returned.
         - The time taken to process the abstract (in seconds).
-
     Example:
     ```python
     abstract_text = "This study aims to evaluate the effectiveness of..."
@@ -95,7 +102,6 @@ def fragment_single_abstract(abstract):
     print("Categorized Abstract:", categorized_abstract)
     print("Processing Time:", processing_time)
     ```
-
     Note:
     - This function assumes that a Keras model 'test.keras' and a custom embedding layer 'EmbeddingLayer'
       are available and correctly configured to be loaded.
@@ -120,7 +126,7 @@ def fragment_single_abstract(abstract):
     conclusion = []
 
     embed_layer = EmbeddingLayer()
-    model = tf.keras.models.load_model("test.keras", custom_objects={'EmbeddingLayer': embed_layer})
+    model = tf.keras.models.load_model("200k_10_epochs.keras", custom_objects={'EmbeddingLayer': embed_layer})
 
     data_by_character = split_sentences_by_characters(sentences)
     line_numbers = tf.one_hot(df["line_number"].to_numpy(), depth=15)
@@ -133,15 +139,15 @@ def fragment_single_abstract(abstract):
     predictions = tf.argmax(model.predict(dataset), axis=1)
 
     for i, prediction in enumerate(predictions):
-        if prediction == 0:
+        if prediction == 3:
             objective.append(sentences_original[i])
-        elif prediction == 1:
-            methods.append(sentences_original[i])
         elif prediction == 2:
-            results.append(sentences_original[i])
-        elif prediction == 3:
-            conclusion.append(sentences_original[i])
+            methods.append(sentences_original[i])
         elif prediction == 4:
+            results.append(sentences_original[i])
+        elif prediction == 1:
+            conclusion.append(sentences_original[i])
+        elif prediction == 0:
             background.append(sentences_original[i])
 
     end_time = timer()
@@ -153,17 +159,12 @@ def fragment_single_abstract(abstract):
 title = "Paper Abstract Fragmentation With TensorFlow by Ryan Tietjen"
 description = f"""
 This app will take the abstract of a paper and break it down into five categories: objective, background, methods, results, and conclusion. 
-The dataset used can be found in the [PubMed 200k RCT]("https://arxiv.org/abs/1710.06071") and in [this repo](https://github.com/Franck-Dernoncourt/pubmed-rct). The model architecture
+The dataset used can be found in the [PubMed 200k RCT]("https://arxiv.org/pdf/1710.06071") and in [this repo](https://github.com/Franck-Dernoncourt/pubmed-rct). The model architecture
 was based off of ["Neural Networks for Joint Sentence Classification in Medical Paper Abstracts."](https://arxiv.org/pdf/1612.05251)
-
-This project achieved a testing accuracy of 88.12% and a F1 score of 87.92%. For the whole project, please visit [my GitHub](https://github.com/RyanTietjen/Paper-Fragmentation).
-
+This model achieved a testing accuracy of 88.2% and a F1 score of 88%. For the whole project, please visit [my GitHub](https://github.com/RyanTietjen/Paper-Fragmentation).
 How to use:
-
 -Paste the given abstract into the box below.
-
 -Make sure to separate each sentence by a new line (this helps avoid ambiguity).
-
 -Click submit, and allow the model to run!
 """
 
